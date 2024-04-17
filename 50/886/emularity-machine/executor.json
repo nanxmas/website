@@ -1,0 +1,12 @@
+{
+    "files": [],
+    "zips": [
+        {
+            "targetPath": "c",
+            "title": "Disk Image",
+            "source": "http://dnbwg.cdn.bcebos.com/emdosbox/executor.zip"
+        }
+    ],
+    "startExe": "executor.exe",
+    "introduction": "document/executor.md"
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>双色球组合生成器</title>
+  <style>
+    .ball {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    .ball.red {
+      background-color: red;
+    }
+
+    .ball.blue {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="countOfCompositions" value="2">
+  <button id="generateBtn">生成</button>
+  <div id="result"></div>
+
+  <script>
+    var compositions = [];
+    var countOfCompositions = document.querySelector('#countOfCompositions').value;
+
+    var generateBtn = document.querySelector('#generateBtn');
+    var result = document.querySelector('#result');
+
+    generateBtn.addEventListener('click', function (params) {
+      compositions = [];
+
+      for (let index = 0; index < parseInt(countOfCompositions); index++) {
+        var composition = [];
+        composition = composition.concat(generateRedBalls()).concat(generateBlueBall());
+
+        compositions.push(composition);
+      }
+
+      refresh();
+    }, false);
+
+    function generateRedBalls() {
+      return generateBall(1, 33, 6);
+    }
+    function generateBlueBall() {
+      return generateBall(1, 16, 1);
+    }
+    function generateBall(start, end, countOfNumbers) {
+      var set = new Set();
+      while (set.size < countOfNumbers) {
+        var number = Math.floor(Math.random() * (end - start + 1)) + start;
+        set.add(number);
+      }
+      return Array.from(set);
+    }
+
+    function refresh() {
+      compositions.forEach(function (composition) {
+        var div = document.createElement('div');
+        composition.forEach(function (ball, index) {
+          var span = document.createElement('span');
+          span.innerText = ball;
+          span.className = 'ball';
+          if (index === 6) {
+            span.classList.add('blue');
+          } else {
+            span.classList.add('red');
+          }
+          div.appendChild(span);
+        })
+        result.appendChild(div);
+      });
+    }
+  </script>
+</body>
+
+</html>

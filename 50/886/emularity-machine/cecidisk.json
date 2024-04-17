@@ -1,0 +1,18 @@
+{
+    "files": [
+        {
+            "targetPath": "chinesegame.dsk",
+            "title": "Floppy Disk",
+            "source": "http://dnbwg2.cdn.bcebos.com/mame-ceci/chinesegame.dsk"
+        }
+    ],
+    "zips": [],
+    "startExe": null,
+    "peripherals": [
+        {
+            "name": "flop1",
+            "value": "chinesegame.dsk"
+        }
+    ],
+    "introduction": "document/ceci.md"
+}

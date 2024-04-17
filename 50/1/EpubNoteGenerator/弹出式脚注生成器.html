@@ -1,0 +1,41 @@
+<html>
+<head><title>脚注生成器</title><style type="text/css">button{height:5em;width:5em;}</style></head>
+<body>
+脚注内容：<br><textarea id="note_content_input" style="width:50em;height:5em;" onfocus="select()" oninput="gen()">注：</textarea><button onclick="counter_input.value=parseInt(counter_input.value)+1;">Next</button><br>
+
+<br>
+生成链接：<br><textarea id="ref_output" style="width:50em;height:8em;"></textarea><button onclick="copy(ref_output)">Copy</button><br>
+生成脚注：<br><textarea id="note_output" style="width:50em;height:8em;"></textarea><button onclick="copy(note_output)">Copy</button><br>
+计数器：<input type="number" step="1" id="counter_input" value="1"  onkeypress='return( /[\d]/.test(String.fromCharCode(event.keyCode) ) )'>
+<br>
+<br>
+链接内容：<br><textarea id="ref_content_input" style="width:50em;height:3em;"></textarea><br>
+
+<br>
+</body>
+    <script>
+        var ref_content_input=document.getElementById("ref_content_input");
+        var ref_output=document.getElementById("ref_output");
+        var note_content_input=document.getElementById("note_content_input");
+        var note_output=document.getElementById("note_output");
+        var counter_input=document.getElementById("counter_input");
+       
+        var ref_content="<sup><img alt=\"note\" class=\"footnote\" src=\"../Images/note.png\"/></sup>";
+        var ref_template="<a class=\"duokan-footnote\" epub:type=\"noteref\" href=\"#{note_id}\" id=\"{ref_id}\">{ref_content}</a>";
+        var note_id_template="note";
+        var ref_id_template="ref";
+        var note_template="    <aside epub:type=\"footnote\" id=\"{note_id}\">\n      <ol class=\"duokan-footnote-content\">\n        <li class=\"duokan-footnote-item\" id=\"{note_id}\" value=\"{counter}\">{note_content}</li>\n      </ol>\n    </aside>";
+    function copy(ele){ele.select();document.execCommand("Copy");}
+    function gen()
+    {
+        ref_content=ref_content_input.value;
+        var counter=counter_input.value;
+        var note_id=note_id_template+counter;
+        var ref_id=ref_id_template+counter;
+        var note_content=note_content_input.value;
+        note_output.value=note_template.replace("{note_id}",note_id).replace("{note_id}",note_id).replace("{counter}",counter).replace("{note_content}",note_content);
+        ref_output.value=ref_template.replace("{note_id}",note_id).replace("{ref_id}",ref_id).replace("{ref_content}",ref_content);
+    }
+    ref_content_input.value=ref_content;
+    </script>
+</html>

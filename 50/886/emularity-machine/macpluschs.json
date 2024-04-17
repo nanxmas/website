@@ -1,0 +1,13 @@
+{
+    "files": [],
+    "zips": [
+        {
+            "targetPath": "disks",
+            "title": "Hard Disks",
+            "source": "http://dnbwg2.cdn.bcebos.com/pce-macplus/macplus-chs.zip"
+        }
+    ],
+    "startExe": null,
+    "peripherals": [],
+    "introduction": "document/macplus.md"
+}

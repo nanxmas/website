@@ -1,0 +1,11 @@
+{
+    "files": [],
+    "zips": [
+        {
+            "targetPath": "c",
+            "title": "Game",
+            "source": "http://dnbwg2.cdn.bcebos.com/pc98dosbox/th2.zip"
+        }
+    ],
+    "startExe": "play.bat"
+}

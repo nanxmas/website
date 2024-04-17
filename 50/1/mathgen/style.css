@@ -1,0 +1,25 @@
+#app {
+    padding: 32px;
+}
+
+*[spacing] {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+input, textarea, .mono {
+    font-family: DejaVu Sans Mono,Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+}
+
+.split {
+    overflow: auto;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row {
+    display: block;
+}

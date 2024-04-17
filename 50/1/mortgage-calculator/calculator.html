@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>按揭分期计算器</title>
+    <link rel="stylesheet" href="materialize/css/materialize.css">
+    <link rel="stylesheet" href="materialize/iconfont/material-icons.css">
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+    <script>
+        if(window.navigator.userAgent.indexOf("MSIE")>=1){
+            window.alert("您正在使用IE11以下浏览器，请允许脚本等加载项，仅在IE11测试通过，不保证在更低版本上能够正常运行。推荐使用Chrome，FireFox，Edge。");
+        }
+        
+    </script>
+
+
+    <nav>
+        <div class="nav-wrapper blue-grey darken-4">
+            <a href="#" class="brand-logo center">按揭分期计算器</a>
+            <ul class="right">
+                <li><a id="help-btn" class="modal-trigger" href="#help-content"><i
+                            class="material-icons">help_outline</i></a></li>
+                <li><a id="refresh-btn" class="modal-trigger" href="#help-content"><i
+                            class="material-icons">refresh</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col s6">
+            <div class="card blue-grey lighten-5">
+                <div class="card-content black-text">
+                    <span class="card-title">在这里输入各种数据</span>
+                    <div class="row">
+                        <form class="col s12" style="color: black">
+                            <div class="input-field col s12">
+                                <input id="balance" type="text" class="validate">
+                                <label for="balance">贷款金额（￥）</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="rate" type="text" class="validate">
+                                <label for="rate">贷款年利率（%）</label>
+                            </div>
+                            <div class="input-field col s7">
+                                <input id="paytime" type="text" class="validate">
+                                <label for="paytime">还款期限</label>
+                            </div>
+
+                            <div class="input-field col s5 ">
+                                <select id="time_type">
+                                    <option value="" disabled selected>选择时间类型</option>
+                                    <option value="1">年</option>
+                                    <option value="2">月</option>
+                                </select>
+                                <label>时间类型</label>
+                            </div>
+
+                            <div class="col s12" style="height: 66px"></div>
+
+                            <div class="switch col s12">
+                                <label>
+                                    <input id="istableshow" type="checkbox">
+                                    <span class="lever"></span>
+                                    显示本金剩余对照表
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a id="calculate_btn" class="blue-grey darken-3 waves-effect waves-light btn"><i
+                            class="material-icons left">add</i>计算</a>
+                    <a id="clear_btn" class="blue-grey darken-3 waves-effect waves-light btn"><i
+                            class="material-icons left">refresh</i>刷新</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s6">
+            <div class="card blue-grey lighten-5">
+                <div class="card-content black-text">
+                    <span class="card-title">计算结果</span>
+                    <div class="row">
+                        <form class="col s12" style="color: black">
+                            <div class="input-field col s6">
+                                <input id="month-pay" placeholder="未计算" type="text" disabled class="validate">
+                                <label for="month-pay">月供每期应付（￥）</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="mon-intrest" placeholder="未计算" type="text" disabled class="validate">
+                                <label for="mon-intrest">月供总计利息（￥）</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="month-intr" placeholder="未计算" type="text" disabled class="validate">
+                                <label for="month-intr">月供每期利息（￥）</label>
+                            </div>
+
+                            <div class="col s12"></div>
+
+                            <div class="input-field col s6">
+                                <input id="biweek-pay" placeholder="未计算" type="text" disabled class="validate">
+                                <label for="biweek-pay">双周供每期应付（￥）</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="bi-intrest" placeholder="未计算" type="text" disabled class="validate">
+                                <label for="intrest">双周供总计利息（￥）</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="biweek-intr" placeholder="未计算" type="text" disabled class="validate">
+                                <label for="biweek-intr">双周供每期利息（￥）</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a id="dowload-txt" class="blue-grey darken-3 waves-effect waves-light btn"><i
+                            class="material-icons left">arrow_downward</i>下载文本(仅Chrome)</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+            <div class="card blue-grey lighten-5">
+                <div class="card-content black-text">
+                    <span class="card-title">本金剩余计算表(单位：￥)</span>
+                </div>
+                <div>
+                    <table class="centered">
+                        <thead>
+                            <tr>
+                                <th>年限（第n年末）</th>
+                                <th>月供方式本金剩余</th>
+                                <th>双周供方式本仅剩余</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbody">
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <div class="card-action">
+                    <a id="dowload-xls" class="blue-grey darken-3 waves-effect waves-light btn"><i
+                            class="material-icons left">arrow_downward</i>导出表格</a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div id="help-content" class="modal">
+        <div class="modal-content">
+            <h4>帮助</h4>
+            <pre style="font-size: 22px;">
+左侧按照标签填写各项数值，点击“计算”按钮，在右侧获得结果。
+推荐使用Chrome、Edge、Firefox等较新浏览器
+仅在IE11测试完成
+!不推荐使用IE11以下版本!
+            </pre>
+        </div>
+
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">了解</a>
+        </div>
+    </div>
+
+    <script src="materialize/js/materialize.js"></script>
+    <script src="js_xlsl/xlsx.full.min.js"></script>
+    <script src="js/render.js"></script>
+    <script src="./js/logic.js"></script>
+</body>
+
+</html>
+
+<!--Powered By Fungus-Light-->
+<!--https://github.com/Fungus-Light-->

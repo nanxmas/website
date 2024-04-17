@@ -1,0 +1,60 @@
+{
+    "header": [
+        " *   ",
+        " *   文件描述：本文件为请求参数，包括不限于网址、请求头、响应头、COOKIE、Referer、UserAgent",
+        " *   本文件仅为记录详细请求参数便于调试，非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.me/faq",
+        " *   "
+    ],
+    "directory": "zoomerok-app-f3ochuas",
+    "options": {
+        "url": "https://zoomerok.app/petpet/",
+        "index": "index.html",
+        "domain": "zoomerok.app",
+        "origin": "https://zoomerok.app",
+        "ipaddress": "172.67.217.134",
+        "originURL": "https://zoomerok.app/petpet/",
+        "filenameGenerator": "byType",
+        "request": {
+            "headers": {
+                "accept": "text/html,*/*",
+                "accept-language": "zh-CN,zh;q=0.9",
+                "accept-encoding": "gzip",
+                "cache-control": "no-cache",
+                "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+                "x-scraper-website": "https://bazhan.me/",
+                "cookie": "__cfduid=d9a73f59fb124f1602d190389bcca53cb1613731922"
+            }
+        },
+        "response": {
+            "statusCode": 200,
+            "headers": {
+                "date": "Fri, 19 Feb 2021 10:52:03 GMT",
+                "content-type": "text/html",
+                "transfer-encoding": "chunked",
+                "connection": "close",
+                "last-modified": "Mon, 16 Nov 2020 13:25:43 GMT",
+                "vary": "Accept-Encoding",
+                "cf-cache-status": "DYNAMIC",
+                "cf-request-id": "085b841b1b00000aa4569ed000000001",
+                "expect-ct": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+                "report-to": "{\"max_age\":604800,\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report?s=uS5MIB0578WpL7NZFVdpUG88r9O1Y4DPcVWvzVWqM2Y3jDX%2FAlyQOE%2BQb91J8mCTKFLkhZsHfsqhqDPZhVJ%2BZxQHKAx2oYPvuLBQAmQ%3D\"}],\"group\":\"cf-nel\"}",
+                "nel": "{\"report_to\":\"cf-nel\",\"max_age\":604800}",
+                "server": "cloudflare",
+                "cf-ray": "623f6fa4fe9a0aa4-NRT",
+                "content-encoding": "gzip"
+            }
+        }
+    },
+    "user": {
+        "isWhite": false
+    },
+    "formatter": [
+        "saveOriginal"
+    ],
+    "time": {
+        "start": 1613731922244,
+        "end": 1613731933111,
+        "spend": "10.867s"
+    }
+}

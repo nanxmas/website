@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+
+
+
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="content-type" content="text/html" />
+	<meta name="author" content="chairyfish" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+	<title>震惊新闻社</title>
+
+	
+</head>
+
+<script src="jquery/jquery-2.1.0.min.js"></script>
+<script src="layer/layer.js"></script>
+
+<body background="img/bg.jpg" style="background-size:cover">
+
+
+
+<div class="content">
+
+<div class="div_linktitle">
+<b id="linkTitle" class="linktitle"  Content='amazingTitle'></b>
+</div>
+
+<div class="div_pic">
+<img class="pic" src="img/sixgirl.jpg" />
+</div>
+
+
+<div class="div_changename" >
+<img class="changename" src="img/换个主角.png" onclick="dialog('username')"/>
+</div>
+
+</div>
+
+
+
+<div class="footer"   align="center";>
+
+
+<img id="share" src="img/奔走相告.png" class="share" />
+
+<img id="refresh" src="img/换条新闻.png" class="changetitle" onclick="rand_Title('firstTitleArray','username','secondTitleArray','thirdTitleArray')"/>
+
+</div>
+
+
+
+
+</body>
+
+<script type="text/javascript">
+
+
+ var firstTitleArray =new Array(
+    "震惊！",
+    "禽兽！",
+    "太不是人了！",
+    "重大揭秘！",
+    "大惊失色！",
+    "惊天内幕！",
+    "居然是这样！",
+    "数万人围观！",
+    "你不得不信，",
+    "速度进！",
+    "有本事你别看！");
+
+var username="杜杨";
+
+var secondTitleArray =new Array(
+    "竟深夜推倒六个少女，",
+    "久吃不胖的三个秘诀，",
+    "隐藏多年的男友终于出现了！",
+    "二十年单身的终极原因，",
+    "第一次做这种事就被发现了，",
+    "不会告诉你的择偶标准，",
+    "账户余额竟高达亿余！",
+    "竟喊话十亿国人，",
+    "最想删除的照片原来是这张！",
+    "居然有女朋友了！不是充气的！",
+    "的真实身份可能是...",
+    "竟在小树林干不可描述的事…",
+    "曾与多名衣衫不整的少女共处一室！");
+
+
+var thirdTitleArray =new Array(
+    "有图有真相！",
+    "你一定要看！",
+    "韩红听了都想打人 ...",
+    "不转不是地大人！",
+    "之前都被骗了！",
+    "不能再瞒着大家了！",
+    "看完我崩溃了...",
+    "男人看完都沉默了...",
+    "赶紧分享！",
+    "简直不敢相信！",
+    "不轻易分享出来！");
+	
+	
+var pictureArray=new Array(
+	"img/sixgirl.jpg"
+	
+	
+
+);
+
+var amazingTitle=rand_Title('firstTitleArray','username','secondTitleArray','thirdTitleArray');
+//document.write(amazingTitle);
+//document.getElementById('linkTitle').textContent=amazingTitle;
+
+
+//新标题党
+function rand_Title(f,u,s,t){
+   var fArray=window[f];
+   var firstTitle=fArray[Math.floor(Math.random()*fArray.length)];
+   var sArray=window[s];
+   var secondTitle=sArray[Math.floor(Math.random()*sArray.length)];
+   var tArray=window[t];
+   var thirdTitle=tArray[Math.floor(Math.random()*tArray.length)];
+   var amazingTitle=firstTitle+window[u]+secondTitle+thirdTitle;
+   document.getElementById('linkTitle').textContent=amazingTitle;
+   return amazingTitle;
+}
+
+
+
+function dialog(username){
+layer.prompt({
+  formType: 2,
+  value: '',
+  title: '请输入名字',
+  area: ['200px', '25px'] //自定义文本域宽高
+}, function(value, index, elem){
+if(value!=""){
+  window[username]=value;
+  document.getElementById('refresh').click();
+  layer.close(index);
+  }
+});
+}
+
+
+
+
+
+</script>
+
+<style>
+#body{
+  height:100%;
+  width:device-width;
+}
+
+.content {
+margin:0px auto;
+width:90%;
+}
+
+.div_linktitle{
+  position:relative;
+  left:5%;
+  padding-top:40%;
+  width:90%;
+  padding-bottom:3%;
+  
+}
+.linktitle{
+  color:#685b44;
+  font-size:1.3em;
+}
+
+.div_pic{
+position:relative;
+left:5%;
+top:38%;
+
+
+}
+
+.pic{
+border:5px solid #685b44;
+width:88%;
+}
+
+.div_changename{
+position:relative;
+left:5%;
+top:75%;
+
+}
+.changename{
+
+width:30%;
+
+}
+
+
+.footer {
+  position:absolute;
+  top:87%;
+  display:inline;
+  padding-bottom:25px;
+}
+
+.share{
+width:40%;
+margin-right:18px;
+}
+
+.changetitle{
+width:40%;
+margin-right:9px;
+}
+</style>
+
+</html>

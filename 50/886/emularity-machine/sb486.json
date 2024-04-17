@@ -1,0 +1,17 @@
+{
+    "files": [
+        {
+            "targetPath": "Subor_V3_1.NES",
+            "title": "Expansion Card",
+            "source": "http://dnbwg2.cdn.bcebos.com/mame-sb486/Subor_V3_1.NES"
+        }
+    ],
+    "zips": [],
+    "startExe": null,
+    "peripherals": [
+        {
+            "name": "cart",
+            "value": "Subor_V3_1.NES"
+        }
+    ]
+}

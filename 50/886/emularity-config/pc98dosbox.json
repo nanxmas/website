@@ -1,0 +1,22 @@
+{
+    "emulatorWASM": "http://dnbwg.cdn.bcebos.com/emularity-common/emulators/dosbox-x/dosbox-x.wasm",
+    "emulatorJS": "http://dnbwg.cdn.bcebos.com/emularity-common/emulators/dosbox-x/dosbox-x.js",
+    "nativeResolution": {
+        "width": 640,
+        "height": 480
+    },
+    "mountFile": [
+        {
+            "targetPath": "dosbox.conf",
+            "title": "Configuration File",
+            "source": "http://dnbwg.cdn.bcebos.com/emularity-common/emulators/dosbox-x/dosbox.conf"
+        }
+    ],
+    "mountZip": [
+        {
+            "targetPath": "y",
+            "title": "Font and Sound File",
+            "source": "http://dnbwg.cdn.bcebos.com/emularity-common/emulators/dosbox-x/font.zip"
+        }
+    ]
+}

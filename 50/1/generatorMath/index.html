@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<script src="./js/commjs.js" type="text/javascript"></script>
+	<script src="./js/storage.js" type="text/javascript"></script>
+	<title>王嘉越的寒假作业</title>
+	<style>
+		#submit {
+			width: 100px;
+			height: 40px;
+			background: #69c;
+			cursor: pointer;
+			float: right;
+		}
+		.title{
+			font-size: 20px;
+		}
+		input{
+			font-size: 16px;
+		}
+		.error_item{
+			margin: 0 5px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div id="time"></div>
+	<div id="list"></div>
+	<button id="submit">提交</button>
+	<hr>
+	<div class="errorlist">
+		<h3>错题集</h3>
+		<div id="errorlist">
+			
+		</div>
+	</div>
+	
+</body>
+</html>
+<script src="./js/index.js"></script>
+<script type="text/javascript">
+	let btn = document.getElementById('submit'),
+	timeDom = document.getElementById("time"),
+	errorDom = document.getElementById('errorlist'),
+	answerList = questionList.result,
+	timelen = answerList.length,
+	totalTime = timelen * 1.1, // 规定做题时长 每题一分钟
+	timeSeconds = totalTime * 60;
+	timeDom.innerHTML = seconds2time(timeSeconds);
+	let tag = setInterval(() => {
+		if (timeSeconds <= 0) {
+			clearInterval(tag);
+			btn.click();
+			setTimeout(() => {
+				alert('时间到你做完了吗');
+			}, 0)
+		} else {
+			timeSeconds -= 1;
+		}
+		timeDom.innerHTML = seconds2time(timeSeconds);
+	}, 1000);
+	let Storage = new LocalStorage('errorList');
+	let Storagevalue = Storage.getItem();
+	if (!Storagevalue) {
+		Storage.setItem([]);
+	}
+	renderErrorItem(Storagevalue, errorDom);
+	/**
+	 * [onclick 提交按钮的点击事件]
+	 * @return {[type]} [description]
+	 */
+	btn.onclick = function() {
+		let error = 0;
+		let answerInput = document.getElementsByTagName('input');
+		let spanList = document.getElementsByClassName('title');
+		let len = answerInput.length;
+				for (var i = 0; i < len; i++) {
+			let item = answerInput[i];
+			item.style = "border: 1px solid initial";
+		}
+		for (var i = 0; i < len; i++) {
+			let item = answerInput[i],
+			value = item.value,
+			title = spanList[i].innerHTML;
+			title = title.replace(/\s+/g, '');
+			if (value != String(answerList[i])) {
+				item.style = "border: 2px solid #f00";
+				if (!Storagevalue.includes(title)) {
+					Storagevalue.push(title)
+				};
+				error += 1;
+			} else {
+				if (Storagevalue.includes(title)) {
+					let index = Storagevalue.indexOf(title);
+					Storagevalue.splice(index, 1);
+				}
+			}
+		}
+		Storage.setItem(Storagevalue);
+		Storagevalue = Storage.getItem();
+		renderErrorItem(Storagevalue, errorDom);
+		if (error === 0) {
+			alert('你真棒! 都答对了。。。。。');
+		}
+	}
+
+
+	function renderErrorItem(errorList, dom) {
+		dom.innerHTML = "";
+		errorList.forEach(item => {
+			let span = document.createElement('span');
+			span.setAttribute('class', 'error_item');
+			span.innerHTML = item;
+			dom.appendChild(span);
+		})
+	}
+</script>

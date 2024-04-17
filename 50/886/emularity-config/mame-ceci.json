@@ -1,0 +1,16 @@
+{
+    "emulatorWASM": "http://dnbwg.cdn.bcebos.com/emularity-common/emulators/jsmess/mameapple2e_wasm.wasm",
+    "emulatorJS": "http://dnbwg.cdn.bcebos.com/emularity-common/emulators/jsmess/mameapple2e_wasm.js",
+    "nativeResolution": {
+        "height": 384,
+        "width": 560
+    },
+    "driverName": "ceci",
+    "mountFile": [
+        {
+            "targetPath": "ceci.zip",
+            "title": "BIOS",
+            "source": "http://dnbwg.cdn.bcebos.com/emularity-common/bios/ceci.zip"
+        }   
+    ]
+}

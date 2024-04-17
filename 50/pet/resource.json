@@ -1,0 +1,86 @@
+{
+    "header": [
+        " *   ",
+        " *   文件描述：本文件为网页资源信息",
+        " *   success字段为下载保存成功的资源;failures字段则为下载保存失败的资源URL",
+        " *   success字段为标准树结构，每一层资源父子关系、URL和保存路径清晰明了",
+        " *   本文件仅为记录检测到的网页资源以便于调试，非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.me/faq",
+        " *   "
+    ],
+    "success": [
+        {
+            "url": "https://zoomerok.app/petpet/",
+            "path": "index.html",
+            "children": [
+                {
+                    "url": "https://zoomerok.app/petpet/img/app-store.png",
+                    "path": "images/app-store.png"
+                },
+                {
+                    "url": "https://mc.yandex.ru/watch/68671459/1",
+                    "path": "images/1.gif"
+                },
+                {
+                    "url": "https://zoomerok.app/petpet/requestInterval.js",
+                    "path": "js/requestInterval.js"
+                },
+                {
+                    "url": "https://zoomerok.app/petpet/gif.js",
+                    "path": "js/gif.js"
+                },
+                {
+                    "url": "https://zoomerok.app/petpet/main.js",
+                    "path": "js/main.js"
+                },
+                {
+                    "url": "https://unpkg.com/sanitize.css@12.0.1/sanitize.css",
+                    "path": "css/sanitize.css"
+                },
+                {
+                    "url": "https://unpkg.com/sanitize.css@12.0.1/forms.css",
+                    "path": "css/forms.css"
+                },
+                {
+                    "url": "https://unpkg.com/sanitize.css@12.0.1/typography.css",
+                    "path": "css/typography.css"
+                },
+                {
+                    "url": "https://unpkg.com/jam-icons@2.0.0/css/jam.min.css",
+                    "path": "css/jam.min.css",
+                    "children": [
+                        {
+                            "url": "https://unpkg.com/jam-icons@2.0.0/fonts/jam-icons.eot",
+                            "path": "fonts/jam-icons.eot"
+                        },
+                        {
+                            "url": "https://unpkg.com/jam-icons@2.0.0/fonts/jam-icons.ttf",
+                            "path": "fonts/jam-icons.ttf"
+                        },
+                        {
+                            "url": "https://unpkg.com/jam-icons@2.0.0/fonts/jam-icons.woff",
+                            "path": "fonts/jam-icons.woff"
+                        },
+                        {
+                            "url": "https://unpkg.com/jam-icons@2.0.0/fonts/jam-icons.svg",
+                            "path": "images/jam-icons.svg"
+                        }
+                    ]
+                },
+                {
+                    "url": "https://zoomerok.app/petpet/style.css",
+                    "path": "css/style.css"
+                },
+                {
+                    "url": "https://zoomerok.app/petpet/favicon.ico",
+                    "path": "favicon.ico"
+                },
+                {
+                    "url": "https://zoomerok.app/petpet/img/pet.gif",
+                    "path": "images/pet.gif"
+                }
+            ]
+        }
+    ],
+    "failures": []
+}

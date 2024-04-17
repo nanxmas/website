@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>视频截图</title>
+<link href="https://cdn.bootcdn.net/ajax/libs/Primer/15.1.0/primer.min.css" rel="stylesheet" />
+  <style>
+    .demo {
+      display: flex;
+      justify-content: center;
+    }
+    .demo .video-box,
+    .demo .img-box {
+      border: solid 1px #15B7F5;
+      width: 800px;
+      margin: 10px;
+      text-align: center;
+      line-height: 0;
+    }
+    .demo .video-box video,
+    .demo .img-box img {
+      max-width: 100%;
+    }
+
+    #imgs {
+      text-align: center;
+      padding: 15px;
+    }
+
+    #imgs img {
+      width: 320px;
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+<div class="form-actions">
+  <div>
+    <input type="file" id="file">
+    <!-- <input type="text" id="url" placeholder="url" /> -->
+    <button id="play">播放</button>
+  </div>
+  <div class="demo">
+    <div class="video-box"><video src="media/movie.webm" id="video" class="video" controls></video></div>
+    <div class="img-box"><img src alt id="img"></div>
+  </div>
+  <div>
+    <button id="jietu">截图</button>
+    <button id="jieTuMultiple">截多张</button>
+    <button id="jieRandomTuMultiple">随机10张</button>
+  </div>
+  <div id="imgs"></div>
+  <script src="js/poster.js"></script>
+  <script>
+    var video = document.getElementById('video')
+    var jietu = document.getElementById('jietu')
+    var img = document.getElementById('img')
+    var file = document.getElementById('file')
+    // var url = document.getElementById('url')
+    var play = document.getElementById('play')
+
+    var playing = false
+    // var videoDone = false
+
+    // video.addEventListener('loadstart', function () {
+    //   console.log('loadstart')
+    //   videoDone = false
+    // })
+    // video.addEventListener('canplaythrough', function () {
+    //   console.log('canplaythrough')
+    //   videoDone = true
+    // })
+
+    video.addEventListener('play', function () {
+      playing = true
+    })
+    video.addEventListener('pause', function () {
+      playing = false
+    })
+    var url = ''
+    play.onclick = function () {
+      if (url) video.src = url
+
+      if (playing) {
+        video.pause()
+        play.innerHTML = '播放'
+      } else {
+        video.play()
+        play.innerHTML = '暂停'
+      }
+    }
+
+    file.onchange = function () {
+      if (file.files.length > 0) {
+        video.src = URL.createObjectURL(file.files[0])
+        video.play()
+      }
+    }
+
+    jietu.onclick = function () {
+      window.$poster.videoScreenshot(video, video.currentTime, function (err, res) {
+        if (err) {
+          return alert(err.message)
+        }
+        console.log(res)
+        img.src = URL.createObjectURL(res[0].blob)
+
+        var imgName = Date.now() + '.png'
+        var imgFile = new File([res[0].blob], imgName, { type: 'image/png' })
+
+        console.log(imgFile)
+      })
+    }
+
+    
+    function rand (num1, num2) {
+      return Math.floor(Math.random() * (num2 - num1 + 1) + num1)
+    }
+
+    function screenshotMultiple (times) {
+      // if (!videoDone) return alert('请等待视频加载完成在执行')
+
+      $poster.videoScreenshot(video, times || [1,5,6,8,3,10,20,30,40,50], function (err, res) {
+        if (err) return alert(err.message)
+
+        console.log(res)
+
+        var html = res.map(function (e) {
+          return '<img src="' + URL.createObjectURL(e.blob) + '" />'
+        })
+
+        document.getElementById('imgs').innerHTML = html
+      })
+    }
+
+    jieTuMultiple.onclick = function () { screenshotMultiple() }
+    jieRandomTuMultiple.onclick = function () {
+      var times = []
+      while (times.length < 10) {
+        var el = rand(5, 95)
+        if (times.indexOf(el) === -1) {
+          times.push(el)
+        }
+      }
+
+      times = times.sort(function (a, b) {
+        return a - b
+      }).map(function (e) {
+        return (e / 100) * video.duration
+      })
+
+      screenshotMultiple(times)
+    }
+  </script>
+</body>
+</html>

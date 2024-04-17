@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>圆周率 π 展开 为 无穷级数</title>
+    <script type="text/javascript">
+
+
+        var _beginTime;
+
+
+        function btnCalculate_Click() {
+
+            writeMsg("spanStatus", "计算中 ……");
+
+            _beginTime = new Date();
+
+            window.setTimeout(Calculate, 0);
+        }
+
+        function Calculate() {
+
+        
+            var n = parseFloat(document.getElementById("txtN").value);
+
+
+            if (isNaN(n) || n <= 0)
+            {
+                alert("n 应填写 正数 。");
+                return;
+            }
+
+
+            var a = Math.sqrt(2);
+            var h;
+
+            var s = [ 2 ];
+
+            for (let i = 1; i <= n; i++) {
+
+                h = 1 - Math.sqrt(1 - Math.pow(1 / 2 * a, 2));
+
+                s[i] = Math.pow(2, i) * a * h;
+
+                a = Math.sqrt(Math.pow(1 / 2 * a, 2) + h * h);
+            }
+
+
+            var series = "";
+            var pi = 0;
+
+            for (let i = 0; i <= n; i++) {
+
+                series += s[i] + " , ";
+                pi += s[i];
+            }
+
+
+            writeMsg("spanStatus", "计算完成 。 耗时 " + ((new Date().getTime() - _beginTime) / 1000) + "秒 。");
+
+            writeMsg("spanResult1", pi);
+            writeMsg("spanResult2", series);           
+            
+        }
+
+        function writeMsg(id, msg) {
+
+            var span = document.getElementById(id);
+
+            span.innerText = msg;
+        }
+    </script>
+</head>
+<body>
+    本程序 说明 见 《圆周率 π 展开 为 无穷级数》 <a href="https://www.cnblogs.com/KSongKing/p/12303911.html" target="_blank">https://www.cnblogs.com/KSongKing/p/12303911.html</a>
+    <br /><br />
+    n = <input id="txtN" value="20" /> n 表示 级数 项数<br /><br />
+    <input type="button" value="计算" onclick="btnCalculate_Click();" style="width: 100px" />
+    <span id="spanStatus"></span><br /><br />
+    π = <span id="spanResult1"></span><br /><br />
+    Series ： <span id="spanResult2"></span><br />
+</body>
+</html>

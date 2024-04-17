@@ -1,0 +1,54 @@
+{
+    "header": [
+        " *   ",
+        " *   文件描述：本文件为网页资源信息",
+        " *   success字段为下载保存成功的资源;failures字段则为下载保存失败的资源URL",
+        " *   success字段为标准树结构，每一层资源父子关系、URL和保存路径清晰明了",
+        " *   本文件仅为记录检测到的网页资源以便于调试，非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.me/faq",
+        " *   "
+    ],
+    "success": [
+        {
+            "url": "https://se-parallelogram-autocomplete.herokuapp.com/",
+            "path": "index.html",
+            "children": [
+                {
+                    "url": "https://se-parallelogram-autocomplete.herokuapp.com/static/js/main.2330f692.js",
+                    "path": "js/main.2330f692.js"
+                },
+                {
+                    "url": "https://se-parallelogram-autocomplete.herokuapp.com/static/css/main.25482481.css",
+                    "path": "css/main.25482481.css",
+                    "children": [
+                        {
+                            "url": "https://se-parallelogram-autocomplete.herokuapp.com/static/media/glyphicons-halflings-regular.f4769f9b.eot",
+                            "path": "fonts/glyphicons-halflings-regular.f4769f9b.eot"
+                        },
+                        {
+                            "url": "https://se-parallelogram-autocomplete.herokuapp.com/static/media/glyphicons-halflings-regular.448c34a5.woff2",
+                            "path": "fonts/glyphicons-halflings-regular.448c34a5.woff2"
+                        },
+                        {
+                            "url": "https://se-parallelogram-autocomplete.herokuapp.com/static/media/glyphicons-halflings-regular.fa277232.woff",
+                            "path": "fonts/glyphicons-halflings-regular.fa277232.woff"
+                        },
+                        {
+                            "url": "https://se-parallelogram-autocomplete.herokuapp.com/static/media/glyphicons-halflings-regular.e18bbf61.ttf",
+                            "path": "fonts/glyphicons-halflings-regular.e18bbf61.ttf"
+                        },
+                        {
+                            "url": "https://se-parallelogram-autocomplete.herokuapp.com/static/media/glyphicons-halflings-regular.89889688.svg#glyphicons_halflingsregular",
+                            "path": "images/glyphicons-halflings-regular.89889688.svg"
+                        }
+                    ]
+                },
+                {
+                    "url": "https://se-parallelogram-autocomplete.herokuapp.com/favicon.ico",
+                    "path": "favicon.ico"
+                }
+            ]
+        }
+    ],
+    "failures": []
+}

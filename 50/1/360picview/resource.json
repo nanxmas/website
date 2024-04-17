@@ -1,0 +1,44 @@
+{
+    "header": [
+        " *   ",
+        " *   文件描述：本文件为网页资源信息",
+        " *   success字段为下载保存成功的资源;failures字段则为下载保存失败的资源URL",
+        " *   success字段为标准树结构，每一层资源父子关系、URL和保存路径清晰明了",
+        " *   本文件仅为记录检测到的网页资源以便于调试，非专业人员可将本文件删除",
+        " *   详细介绍请参考: https://bazhan.me/faq",
+        " *   "
+    ],
+    "success": [
+        {
+            "url": "https://mitmadness.github.io/PanoramaViewer/",
+            "path": "index.html",
+            "children": [
+                {
+                    "url": "https://mitmadness.github.io/PanoramaViewer/polyfill.min.js",
+                    "path": "js/polyfill.min.js"
+                },
+                {
+                    "url": "https://mitmadness.github.io/PanoramaViewer/uevent.min.js",
+                    "path": "js/uevent.min.js"
+                },
+                {
+                    "url": "https://mitmadness.github.io/PanoramaViewer/doT.min.js",
+                    "path": "js/doT.min.js"
+                },
+                {
+                    "url": "https://mitmadness.github.io/PanoramaViewer/three.min.js",
+                    "path": "js/three.min.js"
+                },
+                {
+                    "url": "https://mitmadness.github.io/PanoramaViewer/photo-sphere-viewer.min.js",
+                    "path": "js/photo-sphere-viewer.min.js"
+                },
+                {
+                    "url": "https://mitmadness.github.io/PanoramaViewer/photo-sphere-viewer.min.css",
+                    "path": "css/photo-sphere-viewer.min.css"
+                }
+            ]
+        }
+    ],
+    "failures": []
+}
